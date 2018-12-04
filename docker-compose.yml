@@ -1,0 +1,26 @@
+version: '3'
+volumes:
+    node_modules:
+services:
+    angular-frontend:
+        image: node:10.13
+        command: bash -c "npm install && npm run start"
+        volumes:
+            - ./containers/angular-frontend:/src
+        working_dir: /src
+        ports: 
+            - "4200:4200"
+        links:
+            - golang-api-server
+    golang-api-server:
+        build:
+            dockerfile: Dockerfile.dev
+            context: ./containers/golang-api-server
+        command: fresh
+        expose:
+            - "8080"
+        ports: 
+            - "8080:8080"
+        volumes:
+            - ./containers/golang-api-server:/src
+
