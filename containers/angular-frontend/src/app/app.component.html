@@ -1,1 +1,4 @@
-<h1>Today's Fortune: {{this.fortune$ | async}}</h1>
+<h1>
+  <span [style.color]="color">{{label}}</span>
+  Today's Fortune: {{this.fortune$ | async}}
+</h1>

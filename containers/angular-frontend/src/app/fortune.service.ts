@@ -16,7 +16,7 @@ export class FortuneService {
   }
 
   getFortune(): Observable<string> {
-    return this.http.get<IFortuneResponse>('http://golang-api-server/fortune')
+    return this.http.get<IFortuneResponse>('/api/fortune')
       .pipe(map(response => {
         return response.result;
       }));

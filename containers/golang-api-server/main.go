@@ -23,7 +23,7 @@ type Result struct {
 }
 
 func main() {
-	http.HandleFunc("/fortune", func(w http.ResponseWriter, r *http.Request) {
+	http.HandleFunc("/api/fortune", func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Type", "application/json")
 		result := Result{
 			Result: fortunes[rand.Intn(len(fortunes))],

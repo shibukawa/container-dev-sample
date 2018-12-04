@@ -1,0 +1,17 @@
+version: '3'
+services:
+    angular-frontend:
+        build:
+            dockerfile: Dockerfile
+            context: ./containers/angular-frontend
+        ports: 
+            - "4200:80"
+        links:
+            - golang-api-server
+    golang-api-server:
+        build:
+            dockerfile: Dockerfile
+            context: ./containers/golang-api-server
+        expose:
+            - "8080"
+

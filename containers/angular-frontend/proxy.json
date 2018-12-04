@@ -1,0 +1,5 @@
+{
+  "/api": {
+    "target": "http://golang-api-server:8080"
+  }
+}
