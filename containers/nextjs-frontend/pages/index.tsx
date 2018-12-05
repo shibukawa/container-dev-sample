@@ -39,7 +39,7 @@ class Index extends React.Component<
     public static async getInitialProps({ req }: { req: any }) {
         const isServer = Boolean(req);
         const url = isServer
-            ? "http://golang-api-server:8080/api/fortune"
+            ? "http://java-api-server:8081/api/fortune"
             : "/api/fortune";
         const res = await fetch(url);
         if (res.ok) {
@@ -48,7 +48,6 @@ class Index extends React.Component<
         }
         return { fortune: "fetch error" };
     }
-
 
     constructor(props: IProps & WithStyles<typeof styles>) {
         super(props);

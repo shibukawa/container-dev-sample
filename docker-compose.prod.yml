@@ -2,7 +2,6 @@ version: '3'
 services:
     angular-frontend:
         build:
-            dockerfile: Dockerfile
             context: ./containers/angular-frontend
         ports: 
             - "4200:80"
@@ -10,18 +9,24 @@ services:
             - golang-api-server
     nextjs-frontend:
         build:
-            dockerfile: Dockerfile
             context: ./containers/nextjs-frontend
         ports:
             - "3000:3000"
         links:
-            - golang-api-server
+            - java-api-server
         environment:
             - NODE_ENV=production
     golang-api-server:
         build:
-            dockerfile: Dockerfile
             context: ./containers/golang-api-server
         expose:
             - "8080"
-
+        ports:
+            - "8080:8080"
+    java-api-server:
+        build:
+            context: ./containers/java-api-server
+        expose:
+            - "8081"
+        ports:
+            - "8081:8081"

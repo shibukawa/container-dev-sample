@@ -21,6 +21,6 @@ COPY --from=builder /work/.next .next
 COPY --from=builder /work/dist dist
 ADD package.json .
 ADD package-lock.json .
-RUN npm ci --production
+RUN npm ci --only=production
 EXPOSE 3000
 ENTRYPOINT ["node", "dist/server/server.js"]

@@ -1,6 +1,8 @@
 version: '3'
 volumes:
     node_modules:
+    gradle:
+    java_server_build:
 services:
     angular-frontend:
         image: node:10.13
@@ -22,7 +24,7 @@ services:
         ports: 
             - "3000:3000"
         links:
-            - golang-api-server
+            - java-api-server
     golang-api-server:
         build:
             dockerfile: Dockerfile.dev
@@ -34,4 +36,15 @@ services:
             - "8080:8080"
         volumes:
             - ./containers/golang-api-server:/src
-
+    java-api-server:
+        image: openjdk:11-jdk-slim-sid
+        expose:
+            - "8081"
+        ports:
+            - "8081:8081"
+        volumes:
+            - ./containers/java-api-server:/src
+            - gradle:/root/.gradle
+            - java_server_build:/root/build
+        working_dir: /src
+        command: bash -c "./gradlew build --continuous & ./gradlew bootRun"

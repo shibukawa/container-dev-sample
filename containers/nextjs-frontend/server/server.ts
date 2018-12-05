@@ -15,7 +15,7 @@ const main = async () => {
 
     // Proxy Setting
     const options = {
-        target: "http://golang-api-server:8080",
+        target: "http://java-api-server:8081",
         changeOrigin: false,
         ws: false // proxy websockets
     };
