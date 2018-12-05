@@ -4,12 +4,23 @@ volumes:
 services:
     angular-frontend:
         image: node:10.13
-        command: bash -c "npm install && npm run start"
+        command: bash -c "npm install && npm run dev"
         volumes:
             - ./containers/angular-frontend:/src
         working_dir: /src
         ports: 
             - "4200:4200"
+        links:
+            - golang-api-server
+    nextjs-frontend:
+        image: node:10.13
+        command: bash -c "npm install && npm run dev"
+        volumes:
+            - ./containers/nextjs-frontend:/front
+            - node_modules:/front/node_modules
+        working_dir: /front
+        ports: 
+            - "3000:3000"
         links:
             - golang-api-server
     golang-api-server:

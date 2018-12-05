@@ -1,0 +1,22 @@
+{
+    "rulesDirectory": [
+      "tslint-plugin-prettier"
+    ],
+    "extends": [
+      "tslint:recommended",
+      "tslint-config-prettier",
+      "tslint-react"
+    ],
+    "rules": {
+      "no-console": false,
+      "object-literal-sort-keys": false,
+      "prettier": [
+        true
+      ],
+      "jsx-a11y": {
+        "anchor-is-valid": false
+      },
+      "jsx-no-multiline-js": false,
+      "ordered-imports": false
+    }
+  }

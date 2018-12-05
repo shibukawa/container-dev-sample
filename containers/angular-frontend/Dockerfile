@@ -1,9 +1,9 @@
-FROM node:10.13.0-slim as builder
+FROM node:lts-slim as builder
 WORKDIR /work
-RUN apt-get update \
-    && apt-get install --no-install-recommends -y python build-essential unzip \
-    && apt-get clean
-RUN npm install -g node-gyp
+#RUN apt-get update \
+#    && apt-get install --no-install-recommends -y python build-essential unzip \
+#    && apt-get clean
+#RUN npm install -g node-gyp
 ADD package.json .
 ADD package-lock.json .
 RUN npm ci

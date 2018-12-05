@@ -8,6 +8,16 @@ services:
             - "4200:80"
         links:
             - golang-api-server
+    nextjs-frontend:
+        build:
+            dockerfile: Dockerfile
+            context: ./containers/nextjs-frontend
+        ports:
+            - "3000:3000"
+        links:
+            - golang-api-server
+        environment:
+            - NODE_ENV=production
     golang-api-server:
         build:
             dockerfile: Dockerfile
