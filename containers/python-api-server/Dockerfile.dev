@@ -1,0 +1,9 @@
+FROM python:3.6-alpine
+
+RUN pip install pipenv
+RUN apk add --no-cache build-base
+WORKDIR /src
+COPY . .
+
+RUN pipenv install
+ENTRYPOINT ["pipenv", "run", "dev"] 

@@ -13,7 +13,7 @@ services:
         ports: 
             - "4200:4200"
         links:
-            - golang-api-server
+            - python-api-server
     nextjs-frontend:
         image: node:10.13
         command: bash -c "npm install && npm run dev"
@@ -48,3 +48,13 @@ services:
             - java_server_build:/root/build
         working_dir: /src
         command: bash -c "./gradlew build --continuous & ./gradlew bootRun"
+    python-api-server:
+        build:
+            dockerfile: Dockerfile.dev
+            context: ./containers/python-api-server
+        expose:
+            - "8000"
+        ports: 
+            - "8000:8000"
+        volumes:
+            - ./containers/python-api-server:/src

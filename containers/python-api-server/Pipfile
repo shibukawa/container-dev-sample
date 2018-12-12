@@ -1,0 +1,17 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+
+[packages]
+uvicorn = "*"
+starlette = "*"
+ujson = "*"
+
+[requires]
+python_version = "3.6"
+
+[scripts]
+dev = "uvicorn --host=0.0.0.0 --debug app:app"
